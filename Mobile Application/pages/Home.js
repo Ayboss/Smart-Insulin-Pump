@@ -31,7 +31,14 @@ function Home({ connectionStatus, glucoselevel, activatePump }) {
           >
             Emerging complications of diabetes
           </Text>
-          <Text style={{ fontSize: 14, color: "#525866", marginBottom: 6 }}>
+          <Text
+            style={{
+              fontSize: 14,
+              color: "#525866",
+              marginBottom: 6,
+              lineHeight: 20,
+            }}
+          >
             Diabetes is a group of metabolic diseases characterized by
             hyperglycemia resulting from defects in insulin secretion, insulin
             action, or both. The chronic hyperglycemia of diabetes is associated
@@ -63,7 +70,7 @@ function Home({ connectionStatus, glucoselevel, activatePump }) {
           justifyContent: "center",
           borderRadius: 10,
           marginBottom: 27,
-          marginTop: 200,
+          marginTop: 100,
           marginHorizontal: 20,
         }}
       >

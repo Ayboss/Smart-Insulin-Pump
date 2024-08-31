@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
 function Chart({ glucoselevel }) {
+  const [glucosedatas, setGlucosedats] = useState([70, 110, 120, 80]);
+  console.log(glucoselevel, "LEVEL IN CHART");
+  useEffect(() => {
+    if (glucosedatas.length >= 8) {
+      setGlucosedats([...glucosedatas.slice(1), glucoselevel]);
+    } else {
+      setGlucosedats([...glucosedatas, glucoselevel]);
+    }
+  }, [glucoselevel]);
+
   return (
     <>
       <LineChart
@@ -10,24 +20,24 @@ function Chart({ glucoselevel }) {
           // labels: ["January", "February", "March", "April", "May", "June"],
           datasets: [
             {
-              data: [94, 80, 82, 91, 92, 90, 94, 150],
+              data: glucosedatas,
             },
           ],
         }}
         width={Dimensions.get("window").width - 40} // from react-native
-        height={160}
+        height={208}
         // yAxisLabel="$"
         // yAxisSuffix="mg/dl"
         withVerticalLines={false}
         // withHorizontalLines={false}
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundColor: "#183086",
-          backgroundGradientFrom: "#183086",
-          backgroundGradientTo: "#0C1539",
+          backgroundColor: "#fff",
+          backgroundGradientFrom: "#fff",
+          backgroundGradientTo: "#fff",
           decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+          color: (opacity = 1) => `#9A89FF`,
+          labelColor: (opacity = 1) => `#000`,
           style: {
             borderRadius: 16,
           },
